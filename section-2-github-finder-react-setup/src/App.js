@@ -11,7 +11,7 @@ class App extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
     // runs when component mounts
-    const API_URL = `https://api.github.com/users`;
+    const API_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
     const res = await fetch(`${API_URL}`);
     const data = await res.json();
     this.setState({ users: data, loading: false });
