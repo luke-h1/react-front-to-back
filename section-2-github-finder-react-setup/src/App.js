@@ -9,20 +9,31 @@ class App extends Component {
     users: [],
     loading: false,
   };
-  async componentDidMount() {
+  // async componentDidMount() {
+  //   this.setState({ loading: true });
+  //   // runs when component mounts
+  //   const API_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
+  //   const res = await fetch(`${API_URL}`);
+  //   const data = await res.json();
+  //   this.setState({ users: data, loading: false });
+  // }
+
+  // search github users with text query passed in
+  searchUsers = async (text) => {
     this.setState({ loading: true });
-    // runs when component mounts
-    const API_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
+    const API_URL = `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
     const res = await fetch(`${API_URL}`);
     const data = await res.json();
-    this.setState({ users: data, loading: false });
-  }
+    this.setState({ users: data.items, loading: false });
+  };
+
   render() {
     return (
       <div className='App'>
         <Navbar />
         <div className='container'>
-          <Search />
+          <Search searchUsers={this.searchUsers} />{' '}
+          {/* set prop here to call  this.searchUsers in app.js when form is submitted ^ */}
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
