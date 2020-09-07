@@ -41,7 +41,7 @@ export class Search extends Component {
           <input type='submit' className='btn btn-dark btn-block' />
         </form>
         {showClear && (
-          <button class='btn btn-light btn-block' onClick={clearUsers}>
+          <button className='btn btn-light btn-block' onClick={clearUsers}>
             Clear Users
           </button>
         )}
