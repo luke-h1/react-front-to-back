@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/layout/navbar';
 import Users from './components/users/Users';
+import Search from './components/users/Search';
 
 class App extends Component {
   state = {
@@ -11,7 +12,7 @@ class App extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
     // runs when component mounts
-    const API_URL = `https://api.github.com/users`;
+    const API_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
     const res = await fetch(`${API_URL}`);
     const data = await res.json();
     this.setState({ users: data, loading: false });
@@ -21,6 +22,7 @@ class App extends Component {
       <div className='App'>
         <Navbar />
         <div className='container'>
+          <Search />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
