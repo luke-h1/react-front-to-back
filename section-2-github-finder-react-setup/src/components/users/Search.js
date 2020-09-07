@@ -5,13 +5,14 @@ export class Search extends Component {
     text: '',
   };
 
-  onSubmit = (e) => { 
+  onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.text)
-  }
+    this.props.searchUsers(this.state.text); // get text and call method searchUsers in app.js. calling prop in searchUsers and passing in the text.
+    this.setState({ text: '' }); // clear text state when submit
+  };
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value }); // set name to whatever user passed in.
   };
 
   render() {
