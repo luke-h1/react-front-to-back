@@ -33,7 +33,7 @@ class App extends Component {
         <Navbar />
         <div className='container'>
           <Search searchUsers={this.searchUsers} />{' '}
-          {/* set prop here to call  this.searchUsers in app.js  ^ */}
+          {/* set prop here to call  this.searchUsers in app.js when form is submitted ^ */}
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
