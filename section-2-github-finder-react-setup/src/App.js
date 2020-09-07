@@ -3,11 +3,12 @@ import './App.css';
 import Navbar from './components/layout/navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
-
+import Alert from './components/layout/Alert';
 class App extends Component {
   state = {
     users: [],
     loading: false,
+    alert: null,
   };
   // async componentDidMount() {
   //   this.setState({ loading: true });
@@ -32,16 +33,26 @@ class App extends Component {
     this.setState({ users: [], loading: false });
   };
 
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg, type } });
+    setTimeout(() => {
+      this.setState({ alert: null });
+    }, 2000);
+  };
+
   render() {
     const { users, loading } = this.state;
     return (
       <div className='App'>
         <Navbar />
         <div className='container'>
+          <Alert alert={this.state.alert} />
+
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             showClear={users.length > 0 ? true : false}
+            setAlert={this.setAlert}
           />
           {/* set prop here to call  this.searchUsers in app.js when form is submitted ^ */}
           <Users loading={loading} users={users} />
