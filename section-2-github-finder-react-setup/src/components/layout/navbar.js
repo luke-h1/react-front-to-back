@@ -10,7 +10,7 @@ const Navbar = ({ icon, title }) => {
       </h1>
       <ul>
         <li>
-          <Link to='/'>Home</Link>{' '}
+          <Link to='/'>Home</Link>
           {/* use link to stop state from being cleared */}
         </li>
         <li>
