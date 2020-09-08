@@ -10,6 +10,7 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
     // eslint-disable-next-line
   }, []); // stop making stupid amounts of api calls with [] for useEffect
   // only run useEffect once which mimics the behavior of componentDidMount
+  
   const {
     name,
     avatar_url,
