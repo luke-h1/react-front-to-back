@@ -14,6 +14,7 @@ class App extends Component {
     user: {},
     loading: false,
     alert: null,
+    repos: [],
   };
   // async componentDidMount() {
   //   this.setState({ loading: true });
@@ -42,6 +43,15 @@ class App extends Component {
     this.setState({ user: data, loading: false });
   };
 
+  // get GH user's repos
+  getUserRepos = async (username) => {
+    this.setState({ loading: true });
+    const API_URL = `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
+    const res = await fetch(`${API_URL}`);
+    const data = await res.json();
+    this.setState({ repos: data, loading: false });
+  };
+
   // clear users from state
   clearUsers = () => {
     this.setState({ users: [], loading: false });
@@ -55,7 +65,7 @@ class App extends Component {
   };
 
   render() {
-    const { users, user, loading } = this.state;
+    const { users, user, repos, loading } = this.state;
     return (
       <Router>
         <div className='App'>
@@ -83,7 +93,14 @@ class App extends Component {
                 exact
                 path='/user/:login'
                 render={(props) => (
-                  <User {...props} getUser={this.getUser} user={user} loading={loading} />
+                  <User
+                    {...props}
+                    getUser={this.getUser}
+                    getUserRepos={this.getUserRepos}
+                    user={user}
+                    repos={repos}
+                    loading={loading}
+                  />
                 )}
               />
             </Switch>
