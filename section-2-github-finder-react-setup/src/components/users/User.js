@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 
 export class User extends Component {
@@ -21,11 +22,7 @@ export class User extends Component {
     } = this.props.user;
     const { loading } = this.props;
 
-    return (
-      <div>
-        {name}
-      </div>
-    );
+    return <div>{name}</div>;
   }
 }
 
