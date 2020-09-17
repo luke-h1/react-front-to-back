@@ -5,6 +5,7 @@ const app = express();
 
 connectDB(); // connect to local mongodb
 
+app.use(express.json({ extended: false })); // init middleware
 
 app.get('/', (req, res) =>
   res.json({ msg: 'Welcome to the contact keeper API 🍺 🎲 🚀' })
