@@ -70,7 +70,7 @@ const ContactForm = () => {
       <div>
         <input
           type='submit'
-          value='Add Contact'
+          value='If you click me the app breaks :) '
           className='btn btn-primary btn-block'
         />
       </div>
