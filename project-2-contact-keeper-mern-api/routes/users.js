@@ -35,7 +35,7 @@ router.post(
         email,
         password,
       });
-      const salt = await bcrypt.genSalt(15);
+      const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt); // hash the password
       await user.save(); // store new hashed password in Mongo
       const payload = {
@@ -47,7 +47,7 @@ router.post(
         payload,
         config.get('jwtSecret'),
         {
-          expiresIn: 36000000, // set back to 3600 (1 hour)
+          expiresIn: 3123321600, // set back to 3600 (1 hour)
         },
         (err, token) => {
           if (err) throw err;
