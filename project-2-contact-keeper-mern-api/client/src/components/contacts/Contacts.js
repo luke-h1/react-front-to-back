@@ -4,7 +4,8 @@ import ContactItem from '../contacts/ContactItem';
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
   const { contacts, filtered } = contactContext;
-  if (contacts.length === 0) { // THIS DOESN"T WORK 
+  if (contacts.length === 0) {
+    // THIS DOESN"T WORK
     return <h4>Add a contact </h4>;
   }
   return (
