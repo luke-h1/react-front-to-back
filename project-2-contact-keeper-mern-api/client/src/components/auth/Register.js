@@ -15,7 +15,7 @@ const Register = (props) => {
       clearErrors();
     }
     // eslint-disable-next-line
-  }, []);
+  },[]);
 
   const [user, setUser] = useState({
     name: '',

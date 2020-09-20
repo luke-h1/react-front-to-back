@@ -1,13 +1,10 @@
-import React, { useContext, Fragment, useEffect } from 'react';
+import React, { useContext, Fragment } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 import ContactItem from '../contacts/ContactItem';
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
-  const { contacts, filtered, getContacts, loading } = contactContext;
+  const { contacts, filtered } = contactContext;
 
-  useEffect(() => {
-    getContacts();
-  }, []);
   return (
     <Fragment>
       {filtered !== null
