@@ -53,7 +53,7 @@ const ContactForm = () => {
         type='radio'
         name='type'
         value='personal'
-        defaultChecked={type === 'personal'}
+        checked={type === 'personal'}
         onChange={onChange}
 
       />
@@ -62,7 +62,7 @@ const ContactForm = () => {
         type='radio'
         name='type'
         value='professional'
-        defaultChecked={type === 'professional'}
+        checked={type === 'professional'}
         onChange={onChange}
 
       />
