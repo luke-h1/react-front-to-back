@@ -34,7 +34,7 @@ const AuthState = (props) => {
   // CLEAR ERRORS (CLEAR ERRORS IN STATE)
 
   return (
-    <Auth.Provider
+    <AuthContext.Provider
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
@@ -44,7 +44,7 @@ const AuthState = (props) => {
       }}
     >
       {props.children}
-    </Auth.Provider>
+    </AuthContext.Provider>
   );
 };
 
