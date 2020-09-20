@@ -25,7 +25,7 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   // LOAD USER (HIT AUTH ENDPOINT)
-  const loadUser = () => console.log('load - user')
+  const loadUser = () => console.log('load - user');
 
   // REGISTER USER
   const register = async (formData) => {
@@ -55,7 +55,7 @@ const AuthState = (props) => {
   const logout = () => console.log('logut');
 
   // CLEAR ERRORS (CLEAR ERRORS IN STATE)
-  const clearErrors = () => console.log('clearErrors');
+  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
   return (
     <AuthContext.Provider
@@ -69,7 +69,7 @@ const AuthState = (props) => {
         loadUser,
         login,
         logout,
-        clearErrors
+        clearErrors,
       }}
     >
       {props.children}
