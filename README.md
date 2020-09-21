@@ -9,4 +9,5 @@
 
 
 ## TODO: 
-* look into loadUser() method in AuthState.js & figure out why it is spamming the /api/auth endpoint & causing a similar issue that useEffect does when you don't pass in an empty array 
+* look into loadUser() method in AuthState.js & figure out why it is spamming the /api/auth endpoint & causing a similar issue that useEffect does when you don't pass in an empty array ✅
+  * solution: not passing in correct dispatch msg to reducer. This resulted in the app constantly checking for a JWT token and spamming the /api/auth endpoint for it instead of entering the USER_LOADED state. 
