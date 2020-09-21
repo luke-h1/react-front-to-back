@@ -24,7 +24,9 @@ const ContactState = (props) => {
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
-
+  /*============================
+BASIC CRUD FUNCTIONALITY START 
+==============================*/
   // GET CONTACTS
   const getContacts = async () => {
     try {
@@ -54,11 +56,30 @@ const ContactState = (props) => {
   const deleteContact = async (id) => {
     try {
       await axios.delete(`/api/contacts/${id}`);
-      dispatch({ type: DELETE_CONTACT, payload:  id });
+      dispatch({ type: DELETE_CONTACT, payload: id });
     } catch (err) {
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
     }
   };
+
+  // UPDATE CONTACT
+  const updateContact = async (contact) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.put(`/api/contacts/${contact._id}`, contact, config);
+      dispatch({ type: UPDATE_CONTACT, payload: res.data });
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+    }
+  };
+
+  /*==========================
+BASIC CRUD FUNCTIONALITY END 
+============================*/
 
   // CLEAR CONTACTS
   const clearContacts = () => {
@@ -75,11 +96,6 @@ const ContactState = (props) => {
     dispatch({ type: CLEAR_CURRENT });
   };
 
-  // UPDATE CONTACT
-  const updateContact = (contact) => {
-    dispatch({ type: UPDATE_CONTACT, payload: contact });
-  };
-
   // FILTER CONTACT
   const filterContacts = (text) => {
     dispatch({ type: FILTER_CONTACTS, payload: text });
@@ -89,6 +105,10 @@ const ContactState = (props) => {
   const clearFilter = () => {
     dispatch({ type: CLEAR_FILTER });
   };
+
+  /*==========================
+BASIC CRUD FUNCTIONALITY END 
+============================*/
 
   return (
     <ContactContext.Provider
@@ -112,4 +132,5 @@ const ContactState = (props) => {
     </ContactContext.Provider>
   );
 };
+
 export default ContactState;
