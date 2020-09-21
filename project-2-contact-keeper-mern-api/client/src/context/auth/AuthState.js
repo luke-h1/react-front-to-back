@@ -27,13 +27,14 @@ const AuthState = (props) => {
 
   // LOAD USER (HIT AUTH ENDPOINT)
   const loadUser = async () => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
+    if(localStorage.token){
+      setAuthToken(localStorage.token)
     }
     try {
       const res = await axios.get('/api/auth');
-      dispatch({ type: USER_LOADED, payload: res.data });
+      dispatch({ type: USER_LOADED, payload: res.data }); // USER DATA
     } catch (err) {
+      console.log(err);
       dispatch({ type: AUTH_ERROR });
     }
   };
@@ -51,6 +52,7 @@ const AuthState = (props) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
+      loadUser();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
@@ -72,7 +74,7 @@ const AuthState = (props) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      loadUser()
+      loadUser();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
@@ -82,7 +84,7 @@ const AuthState = (props) => {
   };
 
   // LOGOUT (DESTROY TOKEN)
-  const logout = () => dispatch({ type: LOGOUT })
+  const logout = () => dispatch({ type: LOGOUT });
 
   // CLEAR ERRORS (CLEAR ERRORS IN STATE)
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });

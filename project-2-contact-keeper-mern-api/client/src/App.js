@@ -10,11 +10,12 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import AlertState from './context/alert/AlertState';
 import Alerts from './components/layout/Alerts';
-import setAuthToken from './utils/setAuthToken'; 
+import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
-if(localStorage.token){
+if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
+
 function App() {
   return (
     <AuthState>
