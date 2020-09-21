@@ -51,16 +51,19 @@ const ContactState = (props) => {
   };
 
   // DELETE CONTACT
-  const deleteContact = (id) => {
-    dispatch({ type: DELETE_CONTACT, payload: id });
+  const deleteContact = async (id) => {
+    try {
+      await axios.delete(`/api/contacts/${id}`);
+      dispatch({ type: DELETE_CONTACT, payload:  id });
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+    }
   };
 
-
-  // CLEAR CONTACTS 
+  // CLEAR CONTACTS
   const clearContacts = () => {
     dispatch({ type: CLEAR_CONTACTS });
   };
-
 
   // SET CURRENT CONTACT
   const setCurrent = (contact) => {
@@ -102,12 +105,11 @@ const ContactState = (props) => {
         filterContacts,
         clearFilter,
         getContacts,
-        clearContacts
+        clearContacts,
       }}
     >
       {props.children}
     </ContactContext.Provider>
   );
 };
-
 export default ContactState;

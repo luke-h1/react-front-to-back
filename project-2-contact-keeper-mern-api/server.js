@@ -7,8 +7,8 @@ connectDB(); // connect to local mongodb
 
 app.use(express.json({ extended: false })); // init middleware
 
-app.get('/', (req, res) =>
-  res.json({ msg: 'Welcome to the contact keeper API 🍺 🎲 🚀' })
+app.get('/', async (req, res) =>
+  await res.json({ msg: 'Welcome to the contact keeper API 🍺 🎲 🚀' })
 );
 
 app.use('/api/users', require('./routes/users'));
@@ -17,4 +17,4 @@ app.use('/api/contacts', require('./routes/contacts'));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server Listening On ${PORT}`));
+app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
