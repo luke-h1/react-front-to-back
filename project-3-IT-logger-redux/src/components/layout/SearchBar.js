@@ -3,9 +3,9 @@ import React from 'react';
 const SearchBar = () => {
   return (
     <nav style={{ marginBottom: '30px' }} className='blue'>
-      <div class='nav-wrapper'>
+      <div className='nav-wrapper'>
         <form>
-          <div class='input-field'>
+          <div className='input-field'>
             <input id='search' type='search' required />
             <label className='label-icon' htmlFor='search'>
               <i className='material-icons'>search</i>
