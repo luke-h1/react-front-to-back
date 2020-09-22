@@ -9,6 +9,9 @@ import AddLogModal from './components/logs/AddLogModal';
 import EditLogModal from './components/logs/EditLogModal';
 import AddTechModal from './components/techs/AddTechModal';
 import TechListModal from './components/techs/TechListModal';
+import { Provider } from 'react-redux';
+import store from './store';
+
 function App() {
   useEffect(() => {
     // INIT MATERIALIZE JS
@@ -16,17 +19,19 @@ function App() {
     // eslint-disable-next-line
   }, []);
   return (
-    <Fragment>
-      <SearchBar />
-      <div className='container'>
-        <AddBtn />
-        <AddLogModal />
-        <EditLogModal />
-        <AddTechModal />
-        <TechListModal />
-        <Logs />
-      </div>
-    </Fragment>
+    <Provider store={store}>
+      <Fragment>
+        <SearchBar />
+        <div className='container'>
+          <AddBtn />
+          <AddLogModal />
+          <EditLogModal />
+          <AddTechModal />
+          <TechListModal />
+          <Logs />
+        </div>
+      </Fragment>
+    </Provider>
   );
 }
 
