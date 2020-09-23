@@ -5,6 +5,7 @@
 
 ## Project-1 
   * Github user searcher: https://github-user-search-react-app.netlify.app
+  * context API & hooks 
 
 
 ## Project-2 
@@ -13,11 +14,13 @@
   * frontend runs on locahost:3000 (run npm start in the client directory)
   * MongoDB needs to be installed locally
   * view the routes folder for information on all the routes available 
+  * context API + hooks 
 
 ## project-3 
   * tech logger 
   * backend runs on localhost:5000 (npm run json-server)
   * frontend runs on localhost:3000 (npm start)
+  * redux + hooks 
   
 
 ## TODO: 
