@@ -14,7 +14,11 @@
   * MongoDB needs to be installed locally
   * view the routes folder for information on all the routes available 
 
-
+## project-3 
+  * tech logger 
+  * backend runs on localhost:5000 (npm run json-server)
+  * frontend runs on localhost:3000 (npm start)
+  
 
 ## TODO: 
 * look into loadUser() method in AuthState.js & figure out why it is spamming the /api/auth endpoint & causing a similar issue that useEffect does when you don't pass in an empty array ✅
