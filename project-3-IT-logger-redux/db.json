@@ -1,11 +1,18 @@
 {
   "logs": [
     {
-      "id": 1,
-      "message": "1",
+      "id": 2,
+      "message": "server down on floor 90",
+      "attention": true,
+      "tech": "John Doe",
+      "date": "2020-09-23T09:52:39.835Z"
+    },
+    {
+      "id": 4,
+      "message": "workstation fixed 0044445",
       "attention": false,
-      "tech": "Sara Wilson",
-      "date": "2020-09-22T20:16:17.678Z"
+      "tech": "John Doe",
+      "date": "2020-09-23T09:52:39.835Z"
     }
   ],
   "techs": [

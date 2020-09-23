@@ -1,4 +1,3 @@
-import { FloatingActionButton } from 'materialize-css';
 import {
   GET_LOGS,
   SET_LOADING,
@@ -8,6 +7,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
+  SEARCH_LOGS,
 } from '../actions/types';
 
 const initialState = {
@@ -21,6 +21,13 @@ export default (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
+
+    case SEARCH_LOGS:
+      return {
+        ...state,
+        logs: action.payload,
+        loading: false,
+      };
 
     case SET_CURRENT:
       return {
